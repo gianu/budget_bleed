@@ -7,9 +7,21 @@ var Button = require('react-bootstrap').Button;
 var juration = require('juration');
 
 var Timer = React.createClass({
+  getInitialState: function() {
+      return {
+        buttonName: 'Start!'
+      }
+  },
+
   _toggleTimer: function() {
       this.props.onTimerToggled();
+      if (this.state.buttonName === "Start!") {
+        this.setState({buttonName: "Stop!"});
+      } else {
+        this.setState({buttonName: "Start!"});
+      }
   },
+
   _getTimeElapsed: function() {
     if (this.props.secondsElapsed && this.props.secondsElapsed > 0) {
       return juration.stringify(this.props.secondsElapsed, { format: 'short'});
@@ -26,7 +38,7 @@ var Timer = React.createClass({
           </Col>
           <Col md={2} xs={2}>
             <ButtonToolbar>
-              <Button bsStyle="primary" bsSize="large" onClick={this._toggleTimer}>Start!</Button>
+              <Button bsStyle="primary" bsSize="large" onClick={this._toggleTimer}>{this.state.buttonName}</Button>
             </ButtonToolbar>
           </Col>
         </Row>

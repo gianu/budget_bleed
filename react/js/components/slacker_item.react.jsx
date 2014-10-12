@@ -8,7 +8,7 @@ var SlackerItem = React.createClass({
     onRemove: React.PropTypes.func.isRequired
   },
   _onRemove: function() {
-    this.props.onRemove(this.props.index);
+    this.props.onRemove(this.props.key);
   },
 
   render: function() {

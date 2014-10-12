@@ -11,8 +11,8 @@ var SlackerList = React.createClass({
   render: function() {
     var slackers = [];
     var that = this;
-    _.forEach(this.props.slackers, function(item) {
-      slackers.push(<SlackerItem onRemove={that.props.onRemove} name={item.name} salary={item.monthlyNetSalary} index={item.id} key={item.id} /> );
+    _.forEach(this.props.slackers, function(item, index) {
+      slackers.push(<SlackerItem onRemove={that.props.onRemove} name={item.name} salary={item.monthlyNetSalary} index={index + 1} key={item.id} /> );
     });
 
     return (

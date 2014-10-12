@@ -29,3 +29,6 @@ gulp.task('dev', function() {
     }))
     .pipe(gulp.dest(__dirname));
 });
+
+
+gulp.task('default', ['dev']);
