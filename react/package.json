@@ -1,0 +1,40 @@
+{
+  "name": "Budget-Bleed",
+  "version": "0.0.1",
+  "description": "How much money are you 'investing' in meetings?",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^3.2.0",
+    "immutable": "~2.0.16",
+    "juration": "0.0.1",
+    "lodash": "~2.4.1",
+    "react": "~0.11.2",
+    "react-addons": "^0.9.0",
+    "react-bootstrap": "^0.10.2",
+    "url-loader": "^0.5.5"
+  },
+  "devDependencies": {
+    "css-loader": "^0.9.0",
+    "es6-loader": "^0.2.0",
+    "file-loader": "^0.7.2",
+    "glob": "~4.0.5",
+    "gulp": "~3.8.7",
+    "gulp-util": "~3.0.0",
+    "gulp-webpack": "^0.4.1",
+    "jsx": "^0.9.89",
+    "jsx-loader": "^0.11.2",
+    "style-loader": "^0.8.1",
+    "stylus-loader": "^0.4.0",
+    "url-loader": "^0.5.5",
+    "vinyl-source-stream": "~0.1.1",
+    "webpack": "^1.4.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Sergio Rafael Gianazza",
+    "email": "sgianazza@gmail.com"
+  },
+  "license": "MIT"
+}
