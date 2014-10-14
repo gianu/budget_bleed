@@ -1,6 +1,7 @@
 var React = require('react');
 var ButtonToolbar = require('react-bootstrap').ButtonToolbar;
 var Button = require('react-bootstrap').Button;
+var _ = require('lodash');
 
 var SECONDS_TO_MONTH_RATIO = (60 * 60 * 24 * 22); // 60 seconds, 60 minutes, 24 hours, 22 working days
 
@@ -10,8 +11,10 @@ var BudgetCount = React.createClass({
   },
 
   _getBudgetPerSecond: function(slackers) {
-    var budgetPerMonth = +slackers.monthlyNet;
-    return budgetPerMonth / SECONDS_TO_MONTH_RATIO;
+    var monthlyNet = _.reduce(slackers.list, function(sum, item) {
+      return sum + item.monthlyNetSalary;
+    }, 0);
+    return monthlyNet / SECONDS_TO_MONTH_RATIO;
   },
 
   _clearBudget: function() {
@@ -21,10 +24,12 @@ var BudgetCount = React.createClass({
   },
 
   componentWillReceiveProps: function(nextProps) {
-    var currentBudget = this.state.totalBudget + (this._getBudgetPerSecond(nextProps.slackers) * nextProps.secondsElapsed);
-    this.setState({
-      totalBudget: currentBudget
-    });
+    if (nextProps.secondsElapsed !== this.props.secondsElapsed) { // Only calculate budget if time changed, not if slackers changed.
+      var currentBudget = this.state.totalBudget + (this._getBudgetPerSecond(nextProps.slackers));
+      this.setState({
+        totalBudget: currentBudget
+      });
+    }
   },
 
   _getClearButton: function() {

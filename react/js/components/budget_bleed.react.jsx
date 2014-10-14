@@ -8,14 +8,15 @@ var BudgetCount = require('./budget_count.react');
 var SlackerList = require('./slacker_list.react');
 var AddSlacker = require('./add_slacker.react');
 
+var ONE_SECOND = 1000; // 1seconds = 1000 miliseconds
+
 var BudgetBleed = React.createClass({
   getInitialState: function() {
       return {
         secondsElapsed: 0,
         slackers: {
           list: [],
-          monthlyNet: 0.0,
-          lastIndex: 2
+          lastIndex: 1
         }
       };
   },
@@ -30,7 +31,7 @@ var BudgetBleed = React.createClass({
       this.setState({ secondsElapsed: 0 });
       delete this.interval;
     } else {
-      this.interval = setInterval(this.tick, 1000);
+      this.interval = setInterval(this.tick, ONE_SECOND);
     }
   },
 
@@ -38,10 +39,8 @@ var BudgetBleed = React.createClass({
     var nameList = this.state.slackers.list;
     var newLastIndex = this.state.slackers.lastIndex + 1;
     nameList.push( { id: newLastIndex, name: name, monthlyNetSalary: salary });
-    var newMonthlyNet = this.state.slackers.monthlyNet + +salary;
     this.setState({ slackers: {
       list: nameList,
-      monthlyNet: newMonthlyNet,
       lastIndex: newLastIndex
       }
     });
@@ -50,12 +49,9 @@ var BudgetBleed = React.createClass({
   _onSlackerRemoved: function(index) {
     var nameList = this.state.slackers.list;
     var removed = _.find(nameList, {id: index});
-    var newMonthlyNet = this.state.slackers.monthlyNet - +removed.monthlyNetSalary;
     this.setState({
       slackers: {
-        list: _.reject(nameList, { id: index }),
-        monthlyNet: newMonthlyNet,
-        lastIndex: this.state.slackers.lastIndex
+        list: _.reject(nameList, { id: index })
       }
     });
   },
