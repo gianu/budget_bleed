@@ -2,7 +2,10 @@
   "name": "Budget-Bleed",
   "version": "0.0.1",
   "description": "How much money are you 'investing' in meetings?",
-  "main": "index.js",
+  "main": "index.html",
+  "engines": {
+    "node": "0.10.x"
+  },
   "dependencies": {
     "bootstrap": "^3.2.0",
     "immutable": "~2.0.16",
