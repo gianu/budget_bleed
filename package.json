@@ -29,9 +29,6 @@
     "vinyl-source-stream": "~0.1.1",
     "webpack": "^1.4.4"
   },
-  "scripts": {
-    "postinstall": "node ./node_modules/gulp/bin/gulp.js"
-  },
   "author": {
     "name": "Sergio Rafael Gianazza",
     "email": "sgianazza@gmail.com"
