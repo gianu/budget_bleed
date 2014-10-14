@@ -30,7 +30,7 @@
     "webpack": "^1.4.4"
   },
   "scripts": {
-    "postinstall": "gulp"
+    "postinstall": "node ./node_modules/gulp/bin/gulp.js"
   },
   "author": {
     "name": "Sergio Rafael Gianazza",
