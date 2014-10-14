@@ -13,9 +13,8 @@ var BudgetBleed = React.createClass({
       return {
         secondsElapsed: 0,
         slackers: {
-          list: [ {id: 1, name: 'Sergio Rafael Gianazza', monthlyNetSalary: 1000.00},
-                   {id: 2, name: 'Leonardo Garcia Crespo', monthlyNetSalary: 1500.00}],
-          monthlyNet: 2500.0,
+          list: [],
+          monthlyNet: 0.0,
           lastIndex: 2
         }
       };
